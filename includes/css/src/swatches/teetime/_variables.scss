@@ -23,7 +23,7 @@ $brand-danger:          #C71C22 !default;
 
 $brand-secondary:		#170000 !default;
 $brand-tertiary:		#C4D0A9 !default;
-$brand-quaternary:		#E9EAEA !default;
+$brand-quaternary:		#8d8989 !default;
 $brand-light:			#E9EAEA !default;
 
 //== Scaffolding
@@ -360,14 +360,14 @@ $container-lg:                 $container-large-desktop !default;
 //
 //##
 // Custom
-$navbar-main-color:             	#fff !default;
-$navbar-main-bg:                	$brand-primary !default;
+$navbar-main-color:             	#000 !default;
+$navbar-main-bg:                	#fff !default;
 
 // Custom Navbar links
-$navbar-main-link-color:         	#fff !default;
+$navbar-main-link-color:         	#000 !default;
 
 // Navbar toggle
-$navbar-default-toggle-icon-bar-bg: #fff !default;
+$navbar-default-toggle-icon-bar-bg: $brand-primary !default;
 
 // Basics of a navbar
 $navbar-height:                    50px !default;

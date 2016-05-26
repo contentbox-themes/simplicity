@@ -18,7 +18,7 @@ header {
   padding: 0; }
 
 #nav-main {
-  background: #839A5B; }
+  background: #fff; }
 
 #nav-main.navbar {
   border: none;
@@ -31,7 +31,7 @@ header {
   text-transform: uppercase; }
 
 #nav-main a {
-  color: #fff;
+  color: #000;
   font-size: 1.2em; }
 
 #nav-main .nav > .active > a, #nav-main .nav > .active > a:focus, #nav-main .nav > .active > a:hover {
@@ -43,7 +43,7 @@ header {
   background: #C4D0A9; }
 
 #nav-main .navbar-toggle .icon-bar {
-  background: #fff; }
+  background: #839A5B; }
 
 #nav-main .dropdown-menu {
   border: none; }
@@ -199,7 +199,7 @@ header .locicon {
   color: #E9EAEA; }
 
 #copyright {
-  background: #E9EAEA;
+  background: #8d8989;
   padding: 15px 0; }
 
 /*************************** Tabs *******************/
