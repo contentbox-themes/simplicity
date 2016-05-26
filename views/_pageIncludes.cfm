@@ -63,6 +63,6 @@
 <!--- 					JAVASCRIPT														--->
 <!--- ********************************************************************************* --->
 <!-- injector:js -->
-<script src="#cb.themeRoot()#/includes/js/0e7ec6ea.theme.min.js"></script>
+<script src="#cb.themeRoot()#/includes/js/c4de9a11.theme.min.js"></script>
 <!-- endinjector -->
 </cfoutput>

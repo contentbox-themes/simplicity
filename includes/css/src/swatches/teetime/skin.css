@@ -20,13 +20,13 @@ header {
 #nav-main {
   background: #839A5B; }
 
-@media (min-width: 768px) {
-  #nav-main.navbar {
-    border-radius: 0; } }
 #nav-main.navbar {
   border: none;
   margin-bottom: 0; }
 
+@media (min-width: 768px) {
+  #nav-main.navbar {
+    border-radius: 0; } }
 #nav-main .nav > li {
   text-transform: uppercase; }
 
@@ -60,6 +60,15 @@ header .social {
 header .locicon {
   font-size: 1.5em; }
 
+@media (max-width: 1200px) {
+  #nav-main .nav > li > a {
+    font-size: 1em;
+    padding: 10px 10px; } }
+@media (max-width: 991px) {
+  header .title {
+    position: absolute;
+    z-index: 100; } }
+/************************ body ********************/
 #body-header {
   background: #C4D0A9;
   color: #fff;
@@ -106,7 +115,7 @@ header .locicon {
   margin: 2px;
   padding: 5px 8px; }
 
-/*********** Sections  ****************/
+/************************ sections ********************/
 #section-1 .carousel-img {
   width: 100%; }
 
@@ -114,14 +123,6 @@ header .locicon {
   font-family: Arial, san-serif;
   top: 15%; }
 
-@media screen and (min-width: 768px) {
-  .carousel-caption {
-    left: 0%;
-    right: 50%;
-    padding-bottom: 30px; } }
-@media screen and (max-width: 768px) {
-  .carousel-caption {
-    display: none; } }
 #section-1 .carousel-caption h2 {
   font-size: 4.5em;
   font-weidth: bold;
@@ -172,18 +173,6 @@ header .locicon {
   font-size: 4.5em;
   font-weight: normal; }
 
-#section-3, #section-5, #section-3 a, #section-5 a {
-  color: #FFF; }
-
-#section-3 {
-  background-color: #170000;
-  font-size: 1.4em;
-  text-align: center; }
-
-#section-3 .section-text-box {
-  margin: 0 auto;
-  width: 80%; }
-
 .btn-trans {
   border: 1px solid #FFF;
   border-radius: 0;
@@ -192,7 +181,15 @@ header .locicon {
 .section-text {
   padding-bottom: 15px; }
 
-/*********** Footer  ****************/
+@media screen and (min-width: 768px) {
+  .carousel-caption {
+    left: 0%;
+    right: 50%;
+    padding-bottom: 30px; } }
+@media screen and (max-width: 768px) {
+  .carousel-caption {
+    display: none; } }
+/************************ footer ********************/
 #footer {
   background-color: #FFF;
   color: #FFF;
@@ -227,7 +224,8 @@ header .locicon {
 
 /*************************** Misc *******************/
 .btn {
-  border-radius: 0px; }
+  border-radius: 0px;
+  font-weight: lighter; }
 
 .intro {
   font-size: 1.8em; }
@@ -264,5 +262,9 @@ header .locicon {
   border-radius: 112px;
   height: 225px;
   width: 225px; }
+
+@media (max-width: 768px) {
+  .container-flex {
+    display: block; } }
 
 /*# sourceMappingURL=skin.css.map */
