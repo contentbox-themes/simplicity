@@ -3,18 +3,10 @@
 <cfparam name="args.print" 		default="false">
 <cfparam name="args.sidebar" 	default="true">
 
-<cfset prc.sec1Category = html.slugify( cb.themeSetting( 'sec1Category', 'none' ) )>
 <cfset prc.sec2Category = html.slugify( cb.themeSetting( 'sec2Category', 'none' ) )>
 
 <!--- If homepage, present homepage jumbotron --->
-<cfif cb.isHomePage()>
-	<!--- Section 1 --->
-	<cfif prc.sec1Category is not "none">
-		<section id="section-1">
-			#cb.widget( name='ContentStoreSlider',args={max=3,category=prc.sec1Category} )#
-		</section>
-	</cfif>
-<cfelse>
+<cfif !cb.isHomePage()>
 	<div id="body-header">
 		<div class="container">
 			<!--- Title --->

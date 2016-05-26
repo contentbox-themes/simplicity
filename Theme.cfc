@@ -91,8 +91,6 @@ component{
 			{ name="locPhone", 				group="Location", defaultValue="", 		type="text", 	label="Phone:" },
 			{ name="locEmail", 				group="Location", defaultValue="", 		type="text", 	label="Email:" },
 			
-			{ name="sec1Category", 			group="Slideshow", defaultValue="none", 	type="select", 		label="Content Category:", options="none,#entryCategories()#" },
-			
 			{ name="sec2Category", 			group="Stacked Pages", defaultValue="none", 	type="select", 		label="Page Category:", options="none,#entryCategories()#" },
 			{ name="sec2ActivateMenu", 		group="Stacked Pages", defaultValue="no", 		type="select", 		label="Activate One Page Menu:", options="no,yes" },
 			
@@ -134,6 +132,9 @@ component{
 
 	}
 	
+	/**
+	* After saving theme generate required settings
+	*/
 	function cbadmin_postThemeSettingsSave(event, interceptData, buffer){
 		generatePageContentStackFields();
 	}
