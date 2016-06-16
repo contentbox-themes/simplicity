@@ -1,4 +1,4 @@
 # Simplicity
 Simplicity theme for ContentBox
 
-![open theme preview](https://github.com/contentbox-themes/simplicity/blob/master/screenshot.png)
+<img src="https://raw.githubusercontent.com/contentbox-themes/simplicity/master/screenshot.png" class="img-responsive">
