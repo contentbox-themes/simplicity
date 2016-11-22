@@ -144,7 +144,7 @@ component{
 	*/
 	private function generatePageContentStackFields(){
 		var aFieldKeys 			= [ "bgColor", "alignment","vcenter" ];
-		var pageSectionCatName 	= settingService.getSetting("cb_theme_simplicity_sec2Category");
+		var pageSectionCatName 	= settingService.getSetting("cb_theme_#settingService.getSetting( 'cb_site_theme' )#_sec2Category");
 		
 		// is there a category selected
 		if( pageSectionCatName != "none" ){
@@ -182,7 +182,7 @@ component{
 	* @pages the pages which the menu will be linking
 	*/
 	private function generateOnePageMenu( struct pages ){
-		var isActive	= settingService.getSetting("cb_theme_simplicity_sec2ActivateMenu");
+		var isActive	= settingService.getSetting("cb_theme_#settingService.getSetting( 'cb_site_theme' )#_sec2ActivateMenu");
 		var menuSlug 	= "pcs-one-page-menu";
 		var menuTitle 	= "PCS One Page Menu";
 		var menuClass	= "nav navbar-nav navbar-spy";
