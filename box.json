@@ -4,7 +4,7 @@
     "slug":"cbtheme-simplicity",
     "location"  : "http://downloads.ortussolutions.com/ortussolutions/contentbox-themes/simplicity/@build.version@/simplicity-@build.version@.zip",
     "author":"Ortus Solutions",
-    "homepage":"http://www.ortussolutions.com/products/contentbox",
+    "homepage":"https://www.ortussolutions.com/products/contentbox",
     "documentation":"https://github.com/contentbox-themes/simplicity",
     "repository":{
         "type":"git",
