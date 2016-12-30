@@ -57,7 +57,10 @@
 * - label : The HTML label of the control (defaults to name)
 * - title : The HTML title of the control (defaults to empty string)
 * - options : The select box options. Can be a list or array of values or an array of name-value pair structures
-* 
+* - group : lets you group inputs under a Group name - settings should be in order for groupings to work as expected
+* - groupIntro : Lets you add a description for a group of fields
+* - fieldDescription : Lets you add a description for an individual field
+* - fieldHelp : Lets you add a chunk of HTML for a Modal, openable by the User by clicking on question mark next to the field label. Recommended use is to readFiles from the ./includes/help directory, with a helper function, for example: loadHelpFile( 'cbBootswatchTheme.html' ); 
 */
 component{
  	
@@ -80,10 +83,11 @@ component{
 		
 		// Layout Settings
 		this.settings = [
-			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="corporate", 	type="select", 		label="ContentBox Swatch Theme:", 	required="false", options="corporate,teetime,green-blue" },
-			{ name="headerLogo", 			group="Header", defaultValue="", 		type="text", 	label="Logo URL:" },
-			{ name="headerMainNav", 		group="Header", defaultValue="none", 		type="select", 	label="Main Navigation:", options="none,#menus()#"},
-	
+			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="white", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
+			
+			{ name="headerLogo", 			group="Header", defaultValue="", 		type="text", 	label="Logo URL:", groupIntro="Customize the header section of your theme.", 	fieldDescription="Enter a relative or full url for the website logo. Recommended dimensions: 300x50."  },
+			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", options="none,#menus()#", fieldDescription="Select a menu for the Main Navigation."},
+		
 			{ name="locAddress", 			group="Location", defaultValue="", 		type="text", 	label="Address:" },
 			{ name="locCity", 				group="Location", defaultValue="", 		type="text", 	label="City:" },
 			{ name="locState", 				group="Location", defaultValue="", 		type="text", 	label="State:" },
@@ -91,10 +95,11 @@ component{
 			{ name="locPhone", 				group="Location", defaultValue="", 		type="text", 	label="Phone:" },
 			{ name="locEmail", 				group="Location", defaultValue="", 		type="text", 	label="Email:" },
 			
-			{ name="sec2Category", 			group="Stacked Pages", defaultValue="none", 	type="select", 		label="Page Category:", options="none,#entryCategories()#" },
-			{ name="sec2ActivateMenu", 		group="Stacked Pages", defaultValue="no", 		type="select", 		label="Activate One Page Menu:", options="no,yes" },
+			{ name="sec2Category", 			group="Stacked Pages", defaultValue="none", 	type="select", 		label="Page Category:", options="none,#entryCategories()#", groupIntro="Display content from pages in homepage.", fieldDescription="Select the page category.", fieldHelp="#loadHelpFile( 'pageContentStack.html' )#"  },
+			{ name="sec2ActivateMenu", 		group="Stacked Pages", defaultValue="no", 		type="select", 		label="Activate One Page Menu:", options="no,yes", fieldDescription="By activating, this generates the One Page Menu based on the pages of the above selected page category." },
 			
 			{ name="rssDiscovery", 			group="Homepage", 	defaultValue="true", 	type="boolean",		label="Active RSS Discovery Links", 	required="false" },
+			
 			{ name="showCategoriesBlogSide", 	group="Blog Sidebar Options", defaultValue="true", type="boolean",		label="Show Categories in Blog Sidebar", 	required="false" },
 			{ name="showRecentEntriesBlogSide", group="Blog Sidebar Options", defaultValue="true", type="boolean",	label="Show Recent Enties in Blog Sidebar", 	required="false" },
 			{ name="showSiteUpdatesBlogSide", 	group="Blog Sidebar Options", defaultValue="true", type="boolean",	label="Show Site Updates in Blog Sidebar", 	required="false" },
@@ -111,6 +116,28 @@ component{
 		];
 		return this;
 	}
+	
+	/**
+	* Build the swatches options
+	*/
+	array function getSwatches(){
+		return listToArray( "corporate,teetime,green-blue" );
+	}
+	
+	/**
+	* loadHelpFile - helper function for loading html help into a variable for modal
+	* @helpFileName - the name of the file to read and return
+	* @helpFilePath - the relative directory for the help files. Defaulting to ./includes/help/ inside the theme.
+	* @return the contents of the file or empty string if the file does not exist
+	*/
+	function loadHelpFile( required string helpFileName, string helpFilePath='./includes/help/' ){
+		try {
+			return fileRead( arguments.helpFilePath & arguments.helpFileName );
+		} catch( any e ){
+			return '';
+		}
+	}
+	
 	/**
 	* Call Back when layout is activated
 	*/
