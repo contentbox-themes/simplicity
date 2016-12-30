@@ -86,7 +86,7 @@ component{
 			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="white", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
 			
 			{ name="headerLogo", 			group="Header", defaultValue="", 		type="text", 	label="Logo URL:", groupIntro="Customize the header section of your theme.", 	fieldDescription="Enter a relative or full url for the website logo. Recommended dimensions: 300x50."  },
-			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", options="none,#menus()#", fieldDescription="Select a menu for the Main Navigation."},
+			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", optionsUDF="menus", fieldDescription="Select a menu for the Main Navigation."},
 		
 			{ name="locAddress", 			group="Location", defaultValue="", 		type="text", 	label="Address:" },
 			{ name="locCity", 				group="Location", defaultValue="", 		type="text", 	label="City:" },
@@ -95,7 +95,7 @@ component{
 			{ name="locPhone", 				group="Location", defaultValue="", 		type="text", 	label="Phone:" },
 			{ name="locEmail", 				group="Location", defaultValue="", 		type="text", 	label="Email:" },
 			
-			{ name="sec2Category", 			group="Stacked Pages", defaultValue="none", 	type="select", 		label="Page Category:", options="none,#entryCategories()#", groupIntro="Display content from pages in homepage.", fieldDescription="Select the page category.", fieldHelp="#loadHelpFile( 'pageContentStack.html' )#"  },
+			{ name="sec2Category", 			group="Stacked Pages", defaultValue="none", 	type="select", 		label="Page Category:", optionsUDF="entryCategories", groupIntro="Display content from pages in homepage.", fieldDescription="Select the page category.", fieldHelp="#loadHelpFile( 'pageContentStack.html' )#"  },
 			{ name="sec2ActivateMenu", 		group="Stacked Pages", defaultValue="no", 		type="select", 		label="Activate One Page Menu:", options="no,yes", fieldDescription="By activating, this generates the One Page Menu based on the pages of the above selected page category." },
 			
 			{ name="rssDiscovery", 			group="Homepage", 	defaultValue="true", 	type="boolean",		label="Active RSS Discovery Links", 	required="false" },
@@ -264,16 +264,18 @@ component{
 	/**
 	* Gets names of categories
 	*/
-	private string function entryCategories() {
+	string function entryCategories() {
 		var categoryList = arraytoList( categoryService.getAllNames() );
+		categoryList = ListPrepend( categoryList, "none" );
 		return categoryList;
 	}
 	
 	/**
 	* Gets all menu slugs
 	*/
-	private string function menus() { 
+	string function menus() { 
 		var menuList = arraytoList( menuService.getAllSlugs() );
+		menuList = ListPrepend( menuList, "none" );
 		return menuList;
 	}
 }
