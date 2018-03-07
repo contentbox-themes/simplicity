@@ -68,6 +68,7 @@ component{
  	property name="menuService" 	inject="id:MenuService@cb";
  	property name="categoryService" inject="id:CategoryService@cb";
  	property name="pageService" 	inject="id:PageService@cb";
+ 	property name="customFieldService" inject="customFieldService@cb";
  	 
 	// Layout Variables
     this.name       	= "ContentBox Simplicity Theme";
@@ -83,7 +84,7 @@ component{
 		
 		// Layout Settings
 		this.settings = [
-			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="white", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
+			{ name="cbBootswatchTheme", 	group="Colors", defaultValue="corporate", 	type="select", 	label="ContentBox Color Palette:", 	required="false", optionsUDF="getSwatches", groupIntro="Control the color scheme of your entire site by changing the color palette.", fieldHelp="#loadHelpFile( 'cbBootswatchTheme.html' )#"  },
 			
 			{ name="headerLogo", 			group="Header", defaultValue="", 		type="text", 	label="Logo URL:", groupIntro="Customize the header section of your theme.", 	fieldDescription="Enter a relative or full url for the website logo. Recommended dimensions: 300x50."  },
 			{ name="headerMainNav", 		group="Header", defaultValue="none", 	type="select", 	label="Main Navigation:", optionsUDF="menus", fieldDescription="Select a menu for the Main Navigation."},
@@ -178,25 +179,24 @@ component{
 			var oCategory = categoryService.findWhere( criteria={category=pageSectionCatName} );
 			var sPages = pageService.search( category=oCategory.getCategoryID(), sortOrder="order" );
 			
-			for ( var page in sPages.pages ) {
-				var sfields = page.getCustomFieldsAsStruct();
-					
-				for ( var field in aFieldKeys ) {
-			
-					// if page does not have field	
-					if( !structKeyExists( sfields, field  ) ){
-							
-						// create field
-						transaction{
-							var newCustomField = EntityNew( 'cbCustomField' );
-							newCustomField.setKey( field );
-							newCustomField.setValue( "" );
-							newCustomField.setRelatedContent( page );
+			transaction{
+				for ( var page in sPages.pages ) {
+					var sfields = page.getCustomFieldsAsStruct();
+						
+					for ( var field in aFieldKeys ) {
+				
+						// if page does not have field	
+						if( !structKeyExists( sfields, field  ) ){
 								
-							EntitySave( entity=newCustomField );
+							// create field
+							var args = { key = field, value = "" };
+							var oField = customFieldService.new(properties=args);
+							oField.setRelatedContent( page );
+							page.addCustomField( oField );
+							
 						}
-					}
-				}		
+					}		
+				}
 			}
 			
 			// generate one page menu
