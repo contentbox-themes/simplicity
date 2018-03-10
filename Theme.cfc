@@ -192,8 +192,7 @@ component{
 							var args = { key = field, value = "" };
 							var oField = customFieldService.new(properties=args);
 							oField.setRelatedContent( page );
-							page.addCustomField( oField );
-							
+							customFieldService.save(oField);	
 						}
 					}		
 				}
